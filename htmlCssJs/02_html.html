@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html 태그 수업2</title>
+</head>
+<body>
+    <!-- 
+        .은 현재 파일 경로
+        ..은 부모 위치로 올라감
+        ./cat.jpg 는 현재 위치의 cat.jpg
+
+     -->
+    <img src="../cat.jpg" title="고양이" alt="이미지를 찾을수 없습니다." width="400">
+    <p></p>
+    <a href="/sesac-ys-2/htmlCssJs/01_html.html" target="_blank">이동</a>
+
+    <form action="">
+        이름 : <input type="text" name="name"/>
+        <br>
+        이메일 : <input type="email" name="email"/>
+        <br>
+        패스워드 : <input type="password" name="pw"/>
+        <br>
+        패스워드 확인 : <input type="password" name="pw_check">
+        <br>
+        <input type="button" value="버튼입니다.">
+        <br>
+        <p>
+            <button>button</button>
+        </p>
+        
+        <br>
+        취미를 선택해주세요.
+        <br>
+        <input type="checkbox" name="hobby" value="축구"> 축구
+        <input type="checkbox" name="hobby" value="배구"> 배구
+        <input type="checkbox" name="hobby" value="농구"> 농구
+        <br>
+        성별을 선택해 주세요.
+        <input type="radio" name="gender" value="남성">남성
+        <input type="radio" name="gender" value="여성">여성
+        <br>
+        15세 이상인가요?
+        <input type="radio" name="age" value="true">예
+        <input type="radio" name="age" value="false">아니요
+        <br>
+        생년월일 : <input type="date">
+        <br>
+        색 : <input type="color">
+        <br>
+        범위 : <input type="range" min="1" max="10" step="1">
+        <br>
+        파일 : <input type="file" name="image" >
+        <br>
+        <select name="select_option" id="">
+            <optgroup label="group">
+                <option value="apple">사과</option>
+                <option value="banana">바나나</option>
+            </optgroup>
+            <optgroup label="group2">
+                <option value="straw" disabled>딸기</option>
+                <option value="water">수박</option>
+            </optgroup>
+         
+        </select>
+    </form>
+</body>
+</html>
