@@ -45,3 +45,35 @@ a:visited{
 .fruit3 *:not(span){
     background-color: red;
 }
+
+
+div.before-el::before{
+    content: "앞";
+}
+
+.after-el::after{
+    content: "hot";
+    color: white;
+    font-size: 10px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.box::before{
+    content: "택시";
+}
+
+.box::after{
+    content: "빨리";
+}
+
+input[type=text]{
+    background-color: orange;
+}
+
+input[disabled=true]{
+    background-color: red;
+}
+input[placeholder="이름"]{
+    background-color: orange;
+}
