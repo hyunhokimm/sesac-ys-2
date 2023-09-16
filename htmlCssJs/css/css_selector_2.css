@@ -71,9 +71,3 @@ input[type=text]{
     background-color: orange;
 }
 
-input[disabled=true]{
-    background-color: red;
-}
-input[placeholder="이름"]{
-    background-color: orange;
-}
