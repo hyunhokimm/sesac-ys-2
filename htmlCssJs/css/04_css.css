@@ -1,0 +1,41 @@
+/* *{
+    color: white;
+    background-color: gray;
+} */
+
+/* span{
+    background-color: red;
+} */
+#first{
+    background-color: blue;
+}
+.second{
+    background-color: green;
+}
+ol .second{
+    background-color: brown;
+}
+
+/* 하위 선택자 */
+div .apple{
+    color: rgb(81, 3, 3);
+}
+
+/* 자식 선택자 */
+div > .apple{
+    color: red;
+}
+
+/* 인접 형제 선택자 */
+ h1 + ul {
+    font-size: 50px;
+    color: blue;
+}
+
+/* 일반 형제 선택자 */
+h1 ~ ul {
+    font-size: 20px;
+}
+
+
+
