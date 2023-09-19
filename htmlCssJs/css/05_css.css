@@ -58,4 +58,5 @@ body{
     height: 200px;
     padding: 20px;
     box-sizing: content-box;
+    border: 2px solid ;
 }
