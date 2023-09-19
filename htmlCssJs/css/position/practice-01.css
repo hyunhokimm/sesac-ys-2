@@ -1,0 +1,30 @@
+.container{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background-color: blanchedalmond;
+}
+.box{
+    width: 100px;
+    height: 100px;
+}
+.item-1{
+    background-color: red;
+    position: relative;
+    left: 50px;
+    top: 30px;
+}
+
+.item-2{
+    background-color: green;
+    position: absolute;
+    right: 30px;
+    bottom: 100px;
+}
+
+.item-3{
+    background-color: purple;
+    position: fixed;
+    right: 100px;
+    top: 100px;
+}

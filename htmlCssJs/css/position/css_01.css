@@ -1,0 +1,80 @@
+/* relative 원래의 위치에서 이동 시킴 */
+body{
+    margin: 0;
+    position: relative;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}
+
+.fixed{
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: blue;
+}
+
+.box-red{
+    background-color: red;
+    /* position: absolute; */
+}
+
+.box-green{
+    background-color: green;
+    /* position: relative; */
+}
+
+.box-yellow{
+    background-color: yellow;
+}
+
+.box-2{
+    position: absolute;
+    height: 200px;
+}
+
+.box-purple{
+    background-color: purple;
+}
+
+.box-black{
+    background-color: black;
+}
+
+.box-pink{
+    background-color: pink;
+}
+
+.container{
+    position: relative;
+    height: 200px;
+    background-color: beige;
+}
+
+.item{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+}
+
+.red{
+    background-color: red;
+    /* z-index: 1; */
+}
+
+.orange{
+    background-color: orange;
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+}
+
+.yellow{
+    background-color: yellow;
+    top: 40px;
+    left: 40px;
+}
