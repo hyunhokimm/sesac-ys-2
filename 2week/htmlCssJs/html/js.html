@@ -9,7 +9,53 @@
     <script>
         console.log("text");
         // al  ert('hello')
-        confirm('hello javascript');
+        // confirm('hello javascript');
+
+        //var 재선언 재할당 가능.
+        var name = "conan";
+
+        //let 재선언 불가, 재할당 가능.
+        let age = 23;
+
+        //const 재선언 불가, 재할당 불가
+        const weight = 70;
+
+        console.log(name, age, weight)
+        console.log(name + age)
+        console.log(`${name} ${age} hello` )
+
+
+        let names =['현호', '철수', '영희', '지현']
+        // console.log(names)
+    //    console.log(names.findIndex((inx)=>console.log(inx))) 
+        let cat ={
+            name:'나비',
+            age:5,
+            mew: function(){
+                console.log('야옹')
+            }
+        }
+        console.log(typeof cat)
+
+        let introduce ={
+            hobby:['독서','운동','라이딩'],
+            greeting:function(){
+                console.log('안녕하세요.')
+            },
+            name:'현호',
+            gen:'남',
+            adress:'서울시',
+            bye:function(){
+                console.log('반가웠습니다.')
+            }
+        }
+
+        introduce.greeting()
+        console.log(introduce)
+        introduce.bye()
+
+        console.log(typeof(NaN))
+
     </script>
 </body>
 </html>
