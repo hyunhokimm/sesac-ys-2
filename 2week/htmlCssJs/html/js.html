@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+</head>
+<body>
+    <script>
+        console.log("text");
+        // al  ert('hello')
+        // confirm('hello javascript');
+
+        //var 재선언 재할당 가능.
+        var name = "conan";
+
+        //let 재선언 불가, 재할당 가능.
+        let age = 23;
+
+        //const 재선언 불가, 재할당 불가
+        const weight = 70;
+
+        console.log(name, age, weight)
+        console.log(name + age)
+        console.log(`${name} ${age} hello` )
+
+
+        let names =['현호', '철수', '영희', '지현']
+        // console.log(names)
+    //    console.log(names.findIndex((inx)=>console.log(inx))) 
+        let cat ={
+            name:'나비',
+            age:5,
+            mew: function(){
+                console.log('야옹')
+            }
+        }
+        console.log(typeof cat)
+
+        let introduce ={
+            hobby:['독서','운동','라이딩'],
+            greeting:function(){
+                console.log('안녕하세요.')
+            },
+            name:'현호',
+            gen:'남',
+            adress:'서울시',
+            bye:function(){
+                console.log('반가웠습니다.')
+            }
+        }
+
+        introduce.greeting()
+        console.log(introduce)
+        introduce.bye()
+
+        // console.log(typeof(NaN))
+
+        // let math = Number(prompt('수학점수'))
+        // // let number = Number(math)
+        // console.log(typeof(math))
+        // math = math.toString()
+        // console.log(typeof(math))
+
+        let mathscore = '77'
+        let engScore = '88'
+        mathscore = Number(mathscore)
+        engScore = Number(engScore)
+        console.log((mathscore+engScore)/2)
+
+
+        console.log('80' != 80)
+        console.log('80' == 80)
+        console.log('80' === 80)
+        console.log('80' !== 80)
+
+        console.log(3**6)
+
+        //---------------논리 연산자-------------//
+
+        let bool = true;
+        console.log(!bool)
+
+        let num = 6;
+        num += 1
+        console.log(num)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.img-skew:hover{
+    transform: skew(10deg);
+    
+}
+.img-rotate:hover{
+    transform: rotateY(40deg);
+}
+
+.img-scale:hover{
+    transform: scale(2)
+}
+
+.img-translate:hover{
+    transform: translate(10px,10px);
+}
+
+.img-transform:hover{
+    width: 100px;
+    transform:  rotateY(40deg) translate(10px,10px);
+    transition: transform 2s linear 2s;
+}

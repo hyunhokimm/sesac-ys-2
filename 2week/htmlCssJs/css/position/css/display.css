@@ -1,0 +1,41 @@
+
+
+.d-inline-block{
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    color: white;
+}
+/* flex 특징  자식 요소 (하위요소 아님)를 inline 요소로 만든다.*/
+
+.box{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    color: white;
+}
+
+.container{
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container-2{
+    display: flex;
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+    background-color: blue;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: stretch;
+}

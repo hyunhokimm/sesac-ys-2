@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //--------명시적 함수 선언--------
+        //호이스팅이 가능
+        // helloWorld('친구들')
+
+        // function helloWorld(a){
+        //     console.log(`${a} 안녕~~~`)
+        // }
+
+
+        // //---------함수 표현식-------
+        // let hello = function(){
+        //     console.log('안녕~~~~~')
+        // }
+        // hello()
+
+        function multifly(a , b){
+            return a * b
+        }
+
+        console.log(multifly(3,7))
+        console.log(multifly(2,2))
+
+        let square = function(a){
+            return a**2
+        }
+
+        console.log(square(4))
+        console.log(square(11))
+        console.log(square(5))
+
+
+    </script>
+</body>
+</html>
