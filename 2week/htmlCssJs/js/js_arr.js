@@ -27,5 +27,7 @@ str = str.split('').reverse().join('').toUpperCase()
 
 console.log(str)
 
- let num = str.indexOf('H')
- console.log(num)
+let num = str.indexOf('H')
+console.log(num)
+
+
