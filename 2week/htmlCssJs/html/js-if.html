@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if</title>
+</head>
+<body>
+    <script>
+        const name = 'linda'
+
+        if(name=='lilly' ){
+            console.log('안녕하세요')
+        }else{
+            console.log('lilly가 아닙니다.')
+        }
+
+        let age = 8;
+        if(age >= 20){
+            console.log('성인')
+        }else if(age >= 17){
+            console.log('고등학생')
+        }else if(age >= 14){
+            console.log('중학생')
+        }else if(age >= 8){
+            console.log('초등학생')
+        }else if(age>=0){
+            console.log('유아')
+        }
+
+        // let age2 = 20;
+        // switch(age2){
+        //     case age2 >=20:
+        //         console.log('성인');
+        //         break
+        //     case age2 >=17:
+        //         console.log('성인');
+        //         break
+        //     case age2 >=14:
+        //         console.log('성인');
+        //         break
+        //     case age2 >=8:
+        //         console.log('성인');
+        //         break
+        //     default:
+        //         console.log('유아')
+        // }
+
+        let number = 2;
+        switch(number){
+            case 1:
+                console.log('1이다.')
+                break;
+            case 2:
+                console.log('2이다.')
+                break;
+            default:
+                console.log('3이다')
+                break;
+        }
+
+        //3항 연산자
+        //조건 ? 참일때 실행할 코드 1줄 : 거짓일때 실행할 코드 1줄
+
+        number == 5 ? console.log('2입니다.'): console.log('2가 아닙니다.')
+
+
+        let now = new Date().getHours()
+
+        console.log(now)
+
+        let msg = now >= 12 ? '오후입니다.' : '오전입니다.'
+        console.log(msg)
+
+
+
+    </script>
+</body>
+</html>
