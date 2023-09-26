@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .red{
+            background-color: red;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+        <button type="button" onclick="on()">button</button>
+    </div>
+
+    <script>
+        function on(){
+           boxes = document.querySelectorAll('.box')
+           console.log(boxes[0])
+        }
+    </script>
+</body>
+</html>
