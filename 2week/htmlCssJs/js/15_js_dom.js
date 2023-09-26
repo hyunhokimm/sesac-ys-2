@@ -32,3 +32,5 @@ box3.innerText = 'hello hh'
 
 //innerText와 다른점은 태그도 넣을수 있다.
 box3.innerHTML = '<h1>태그가 바뀌었습니다.<h1>'
+
+console.log(box3.attributes)
