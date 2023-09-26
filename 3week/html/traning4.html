@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traning4</title>
+    <style>
+        #rainbow{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <button onclick="color()">
+        <div id="rainbow"></div>
+</button>
+
+<script>
+    let a = 1;
+    function color(){
+        if(a == 1){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: red')
+            a++;
+        } else if(a == 2){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: orange')
+            a++
+        }else if(a == 3){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: yellow')
+            a++
+        }else if(a == 4){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: green')
+            a++
+        }else if(a == 5){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: blue')
+            a++
+        }else if(a == 6){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: rgb(5, 5, 48)')
+            a++
+        }else if(a == 7){
+            console.log(a)
+            $('#rainbow').attr('style','background-color: purple')
+            a = 1
+        }
+    }
+</script>
+</body>
+</html>

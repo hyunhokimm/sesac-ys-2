@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trainaing3</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <div>
+
+            <img class="container"   id="img" alt="과일을 골라보세요.">
+        </div>
+        <div>
+            <button onclick="appleSee()">사과</button>
+            <button onclick="bananaSee()">바나나</button>
+            <button onclick="grapeSee()">포도</button>
+            <button onclick="peachSee()">복숭아</button>
+        </div>
+
+    </div>
+    <script>
+       let apple = src="../img/apple.jpg"
+       let banana = src="../img/banana.jpg"
+       let grape = src="../img/grape.jpg"
+       let peach = src="../img/peach.jpg"
+
+        function appleSee(){
+           $('#img').attr('src',`${apple}`)
+        }
+
+        function bananaSee(){
+            $('#img').attr('src',`${banana}`)
+        }
+
+        function grapeSee(){
+            $('#img').attr('src',`${grape}`)
+        }
+
+        function peachSee(){
+            $('#img').attr('src',`${peach}`)
+        }
+    </script>
+</body>
+</html>
