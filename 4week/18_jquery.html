@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>jquery</title>
+    <style>
+      .container {
+        background-color: cadetblue;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <input type="text" name="pw" />
+    <script>
+      //  로딩 이벤트: html이 로드된 후 실행할 코드
+      // $(document).ready(function(){
+      //     console.log($('.container'))
+      // })
+
+      // $(function(){
+      //     console.log($('.container'))
+      // })
+
+      let square = true;
+      const toggle = () => {
+        square
+          ? $(".container").css("background-color", "red")
+          : $(".container").css("background-color", "blue");
+
+        square = !square;
+      };
+
+      $(".container").click(toggle);
+
+      // ----------------------------------------------------------
+
+      $(".container").hover(
+        function () {
+          console.log("hover");
+        },
+        function () {
+          console.log("hover out");
+        }
+      );
+
+      $(document).scroll(function () {
+        if ($(document).height() - $(window).scrollTop()) {
+        }
+      });
+
+      // keydown - 선택한 요소에서 키보드를 누르는 이벤트가 발생한 경우
+      // keyup - 선택한 요소에서 키보드를 떼는 이벤트가 발생한 경우
+      $("input[name=pw]").keyup(function (event) {
+        if (event.key == "Enter") {
+          console.log("enter");
+        }
+        console.log("ddd");
+      });
+
+      const container = document.getElementsByClassName("container");
+      //addEventListener 는 한개의 요소에만 이벤트를 걸수 있다.
+      container[0].addEventListener("click", function () {
+        this.style.backgroundColor = "red";
+        console.log(this.style);
+      });
+    </script>
+  </body>
+</html>

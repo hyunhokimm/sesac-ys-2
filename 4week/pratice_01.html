@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>practice01</title>
+    <style>
+      .container {
+        display: flex;
+      }
+      .calender {
+        height: 100%;
+        display: flex;
+      }
+      .sun{
+        color: red;
+      }
+      .sat{
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <div>
+          <span>날짜 : </span>
+          <input type="text" class="dateIn" />
+        </div>
+        <div>
+          <span>내용 : </span>
+          <input type="text" class="content"/>
+        </div>
+        <button onclick=textInput()>작성</button>
+      </div>
+      <div class="calender">
+        <div >2022년 7월</div>
+      <table class="date">
+        <tr>
+          <td class="sun">일</td>
+          <td>월</td>
+          <td>화</td>
+          <td>수</td>
+          <td>목</td>
+          <td>금</td>
+          <td class="sat">토</td>
+        </tr>
+        <tr>
+          <td class="sun"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>1</td>
+          <td class="sat">2</td>
+        </tr>
+        <tr>
+          <td class="sun">3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td class="sat">9</td>
+        </tr>
+        <tr>
+          <td class="sun">10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td class="sat">16</td>
+        </tr>
+        <tr>
+          <td class="sun">17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td class="sat">23</td>
+        </tr>
+        <tr>
+          <td class="sun">24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td class="sat">30</td>
+        </tr>
+        <tr>
+          <td class="sun">31</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="sat"></td>
+        </tr>
+        </table>
+      </div>
+      
+      </div>
+    </div>
+    <script>
+      let ver;
+
+      $('td').on('click',(e)=>{
+        ver = e.target.innerHTML
+        $('.container .dateIn').val(e.target.innerHTML)
+      })
+
+      const textInput =(e)=>{
+        console.log(ver)
+        console.log($('.content').val())
+        $('td').append($('.content').val())
+       }
+    </script>
+  </body>
+</html>
