@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      table {
+        margin-top: 50px;
+      }
+
+      td {
+        cursor: pointer;
+        /* calc 함수: 계산을 해주는 css 기본 함수 */
+        /* 부모요소 전체 넓이(100%) 나누기 7 연산 진행 후 결과를 px로 반환*/
+        width: calc(100% / 7);
+        height: 80px;
+        vertical-align: top;
+      }
+
+      tr > td:first-child,
+      tr > th:first-child {
+        color: red;
+      }
+
+      tr > td:last-child,
+      tr > th:last-child {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="date" placeholder="날짜" readonly />
+    <input type="text" name="todo" placeholder="할 일" />
+    <button type="button" onclick="addSchedule()">작성</button>
+
+    <table align="center" width="90%" style="text-align: center">
+      <tr>
+        <th>日</th>
+        <th>月</th>
+        <th>火</th>
+        <th>水</th>
+        <th>木</th>
+        <th>金</th>
+        <th>土</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+    </table>
+
+    <script>
+      let dateEl;
+
+      $("td").on("click", function () {
+        const date = $(this).text();
+        $("input[name=date]").val(date);
+        dateEl = this;
+        console.log(dateEl);
+      });
+
+      function addSchedule() {
+        const todo = $("input[name=todo]").val();
+        $(dateEl).append(`<div>${todo}</div>`);
+      }
+    </script>
+  </body>
+</html>

@@ -34,7 +34,7 @@
         </div>
         <button onclick=textInput()>작성</button>
       </div>
-      <div class="calender" >2022년 7월</div>
+      <span class="calender" >2022년 7월</span>
       
       <table class="date">
         <tr>
@@ -106,17 +106,17 @@
       </div>
     </div>
     <script>
-      let ver;
+      let dateEl;
 
       $('td').on('click',(e)=>{
-        ver = e.target.innerHTML
+        dateEl = e.target
         $('.container .dateIn').val(e.target.innerHTML)
       })
 
       const textInput =(e)=>{
-        console.log(ver)
-        console.log($('.content').val())
-        
+       todo = $('.content').val()
+        console.log(dateEl)
+        $(dateEl).append(`<div>${todo}</div>}`)
        }
     </script>
   </body>

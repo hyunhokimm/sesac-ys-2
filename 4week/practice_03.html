@@ -34,54 +34,59 @@
 
       /* 768px 보다 클때의 header */
       header .inner {
+        position: relative;
         background-color: lightblue;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
       }
 
       /* LOGO */
       header .inner .logo {
         color: white;
         font-size: 30px;
-        width: 20%;
+        position: absolute;
+        left: 50px;
       }
 
       header .inner .menu {
         display: flex;
-        width: 80%;
-        justify-content: center;
       }
 
       header .inner .menu li {
-        font-weight: bold;
-        align-items: center;
+        margin: 0 15px;
+        font-weight: 800;
+        cursor: pointer;
       }
 
+      /* 미디어 쿼리 작성 768px 이하일 때  */
       @media screen and (max-width: 768px) {
         header {
-          height: 300px;
-        }
-
-        header .inner {
-          display: block;
           height: var(--nav-height-sm);
         }
 
         header .inner .menu {
           display: block;
-          background-color: rgb(226, 244, 247);
-          width: 100%;
+          text-align: center;
+          background-color: aliceblue;
         }
+
+        header .inner {
+          display: block;
+        }
+
+        header .inner .logo {
+          position: static;
+          height: 100%;
+          line-height: var(--nav-height-sm);
+          text-align: center;
+        }
+
         header .inner .menu li {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          /* margin: 20px; */
+          padding: 10px;
         }
       }
-
-      /* 미디어 쿼리 작성 768px 이하일 때  */
     </style>
   </head>
   <body>
