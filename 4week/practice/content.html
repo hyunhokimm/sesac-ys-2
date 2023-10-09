@@ -240,16 +240,18 @@
     ></script>
     <script>
       let clickBool = false;
-      $(".following").click(() => {
+      $('.following').click(() => {
         // console.log("click");
-        // if (clickBool) {
-        $(".fol").append("<div class='followw'>팔로우</div>");
-        // $(".following").attr("data-bs-dismiss", "modal");
-        //   clickBool = true;
-        // } else {
-        //   clickBool = false;
-        //   return;
-        // }
+        if (!clickBool) {
+          $('.fol').append("<div class='followw'>팔로우</div>");
+          clickBool = !clickBool;
+          $('.follow').attr('disabled', true);
+          // $(".following").attr("data-bs-dismiss", "modal");
+          //   clickBool = true;
+          // } else {
+          //   clickBool = false;
+          //   return;
+        }
       });
     </script>
   </body>
