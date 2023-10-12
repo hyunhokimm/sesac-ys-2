@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ejs</title>
-    <link rel="stylesheet" href="/static/css/index.css">
-
+    <title>lily Ejs</title>
   </head>
   <body>
-    <div class="box"></div>
+    <%= name %>
+    <% for(let i =0; i<5; i++){ %>
+    <div>상품 <%= i %></div>
+    <% } %>
+    <%- include('index.ejs') %>
   </body>
 </html>
