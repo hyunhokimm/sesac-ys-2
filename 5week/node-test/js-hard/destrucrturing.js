@@ -26,3 +26,18 @@ console.log(word3);
 const kk = { ...hh, adress: "seoul" };
 console.log(kk);
 // const { name, age, gender } = obj;
+
+const values = [10, 20, 30];
+
+function get(a, ...rest) {
+  console.log(a);
+  console.log(rest);
+}
+
+get(...values);
+// 10
+// [ 20, 30 ]
+
+get(values);
+// [ 10, 20, 30 ]
+// []
