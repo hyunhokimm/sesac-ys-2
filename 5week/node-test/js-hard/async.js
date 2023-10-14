@@ -1,3 +1,4 @@
+// 원본
 // function goMart() {
 //   console.log('마트에서 무엇을 살지 고민중..');
 // }
@@ -21,6 +22,30 @@
 // pickDrink();
 // pay(product, price);
 
+// callback
+// function goMart() {
+//   console.log('마트에서 무엇을 살지 고민중..');
+// }
+
+// let product;
+// let price;
+
+//  function pickDrink(cb) {
+//    setTimeout(function () {
+//     console.log('고민끝');
+//     product = '제로콜라';
+//     price = 1900;
+//     cb(product, price)
+//   }, 3000);
+// }
+
+// function pay(product, price) {
+//   console.log(`상품명 : ${product} 가격은 ${price} 입니다.`);
+// }
+
+// goMart();
+// pickDrink(pay);
+
 function goMart() {
   console.log('마트에서 무엇을 살지 고민중..');
 }
@@ -43,6 +68,14 @@ function pay(product, price) {
   console.log(`상품명 : ${product} 가격은 ${price} 입니다.`);
 }
 
-goMart();
-pickDrink().then(pay(product, price));
+// goMart();
+// pickDrink().then(() => pay(product, price));
 // pay(product, price);
+
+async function a() {
+  goMart();
+  await pickDrink();
+  pay(product, price);
+}
+
+a();

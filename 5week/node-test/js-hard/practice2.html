@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>color change</title>
+  </head>
+  <body>
+    <script>
+      function colorChange(name) {
+        return new Promise((res, rej) => {
+          setTimeout(() => {
+            document.body.style.backgroundColor = name;
+            res();
+          }, 1000);
+        });
+      }
+
+      async function colorA() {
+        await colorChange('orange');
+        await colorChange('tomato');
+        await colorChange('purple');
+      }
+
+      function colorB() {
+        return new Promise((res, rej) => {
+          colorChange('red')
+            .then(() => colorChange('blue'))
+            .then(() => colorChange('green'))
+            .then(() => colorChange('black'))
+            .then(() => res()); // <--이 부분이 있어야 색생이 순차적으로 변경이 되는거 같은데 이부분이 왜 필요한지 이해를 못하겠습니다.
+        });
+      }
+
+      colorB().then(() => colorA());
+    </script>
+  </body>
+</html>

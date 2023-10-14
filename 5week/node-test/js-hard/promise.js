@@ -54,6 +54,45 @@ promise1(false)
 
 // promise 로 변경
 
+// function add(n1, n2) {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       let result = n1 + n2;
+//       res(result);
+//     }, 1000);
+//   });
+// }
+
+// function mul(n1) {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       let result = n1 * 2;
+//       res(result);
+//     }, 700);
+//   });
+// }
+
+// function sub(n1) {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       let result = n1 - 1;
+//       res(result);
+//     }, 500);
+//   });
+// }
+
+// add(4, 5)
+//   .then((result) => {
+//     return mul(result);
+//   })
+//   .then((result) => {
+//     return sub(result);
+//   })
+//   .then((result) => console.log(result))
+//   .catch(() => console.log('실패'));
+
+// async await 사용 예시
+
 function add(n1, n2) {
   return new Promise((res, rej) => {
     setTimeout(() => {
@@ -81,11 +120,11 @@ function sub(n1) {
   });
 }
 
-add(4, 5)
-  .then((result) => {
-    return mul(result);
-  })
-  .then((result) => {
-    return sub(result);
-  })
-  .then((result) => console.log(result));
+async function exe() {
+  const x = await add(4, 5);
+  const y = await mul(x);
+  const z = await sub(y);
+  console.log(z);
+}
+
+exe();
