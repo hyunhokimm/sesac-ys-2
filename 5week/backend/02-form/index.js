@@ -27,4 +27,12 @@ app.post("/post", (req, res) => {
   console.log(req.body);
 });
 
+app.post("/post/ver2", (req, res) => {
+  const user = req.body;
+  res.render("result", {
+    name: user.name,
+    email: user.email,
+  });
+});
+
 app.listen(PORT, () => console.log(`http://localhost:8000`));
