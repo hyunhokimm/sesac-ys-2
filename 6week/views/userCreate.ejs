@@ -9,8 +9,88 @@
     <div><%= user.name %> 님 안녕하세요</div>
     <div>성별은 <%= user.gender %> 입니다.</div>
     <div>취미는 <%= user.hobby %> 군요?.</div>
+    <br />
+    <form action="/validate" method="post">
+      <fieldset>
+        <legend>validate</legend>
+        <div>
+          <span>id</span>
+          <input
+            type="text"
+            name="id"
+            oninput="oninputId(this)"
+            placeholder="영어,숫자 5글자 이상"
+            required
+          />
+        </div>
+        <div>
+          <span>비밀번호</span>
+          <input
+            type="password"
+            name="password"
+            oninput="oninputPassword(this)"
+            placeholder="영어소문자,대문자,숫자,특수문자 8글자 이상"
+            required
+          />
+        </div>
+        <div>
+          <span>전화번호</span>
+          <input
+            type="number"
+            name="phone"
+            oninput="oninputPhone(this)"
+            maxlength="13"
+            required
+            placeholder="010-0000-0000"
+          />
+        </div>
+        <div>
+          <span>이름</span>
+          <input type="text" name="name" required />
+        </div>
+        <div>
+          <span>성별</span>
+          <select name="gender">
+            <option value="man" required>남</option>
+            <option value="woman" required>여</option>
+          </select>
+        </div>
+        <button type="submit">onsubmit</button>
+      </fieldset>
+      <div id="error"></div>
+    </form>
   </body>
   <script>
-    console.log("<%= user %>"); // user 변수를 출력
+    const err = document.getElementById("error");
+    function oninputId(target) {
+      const regexPw = /^([a-z0-9]){5,}$/;
+      if (regexPw.test(target.value)) {
+        console.log(target.value);
+        err.innerHTML = "";
+      } else {
+        err.innerHTML = "ID 조건을 확인 후 입력해 주세요.";
+      }
+    }
+
+    function oninputPhone(target) {
+      const regexPw = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+      if (regexPw.test(target.value)) {
+        console.log(target.value);
+        err.innerHTML = "";
+      } else {
+        err.innerHTML = " phone 번호 조건을 확인해 주세요.";
+      }
+    }
+
+    function oninputPassword(target) {
+      console.log(target.value);
+      const regexPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+      if (regexPw.test(target.value)) {
+        console.log(target.value);
+        err.innerHTML = "";
+      } else {
+        err.innerHTML = "password 조건을 다시 확인해 주세요.";
+      }
+    }
   </script>
 </html>

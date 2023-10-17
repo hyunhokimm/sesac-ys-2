@@ -15,6 +15,10 @@ app.post("/user", (req, res) => {
   res.render("userCreate", { user });
 });
 
+app.post("/validate", (req, res) => {
+  console.log(req.body);
+});
+
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });

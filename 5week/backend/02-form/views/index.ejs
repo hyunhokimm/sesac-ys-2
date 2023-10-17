@@ -25,11 +25,34 @@
     </form>
     <h1>회원 가입 post 요청</h1>
     <form action="/post/ver2" method="post" name="account">
-      <input type="text" name="id" />
-      <input type="password`" name="pw" />
+      <input type="text" name="id" pattern="" />
+      <input type="password" name="pw" oninput="validCheckPw(this)" />
       <input type="text" name="name" />
       <input type="text" name="email" />
       <button type="submit">회원가입</button>
     </form>
+    <script>
+      function validCheckPw(el) {
+        const regexPw = /^([a-z0-9]){8,12}$/;
+        const value = el.value;
+        if (regexPw.test(value)) {
+          console.log("합격");
+        } else {
+          console.log("불합격");
+        }
+      }
+
+      // function validCheckPw(el) {
+      //   const regexPw = /^([a-z0-9]){8,12}$/;
+      //   const value = el.value;
+      //   const error = document.getElementById("error-pw");
+      //   // regexPw.test("검사하고 싶은 값") => true or false return
+      //   if (regexPw.test(value)) {
+      //     console.log("정규식 일치");
+      //   } else {
+      //     console.log("정규식 불일치");
+      //   }
+      // }
+    </script>
   </body>
 </html>
