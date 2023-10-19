@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>동적</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form name="register">
+      <input type="text" placeholder="ID" name="id" required />
+      <input type="password" placeholder="password" name="pw" />
+      <input type="text" placeholder="name" name="name" />
+      <button type="button" onclick="ajaxGet()">ajax get</button>
+      <button type="button" onclick="ajaxPost()">ajax post</button>
+      <br />
+      <button type="button" onclick="axiosGet()">axios get</button>
+      <button type="button" onclick="axiosPost()">axios post</button>
+    </form>
+    <h3 id="result"></h3>
+    <script>
+      function getData() {
+        const form = document.forms["register"];
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const data = {
+          id: form.id.value,
+          name: form.name.value,
+          password: form.pw.value,
+        };
+        return data;
+      }
+
+      function ajaxGet() {
+        data = getData();
+        if (!data) return;
+        $.ajax({
+          type: "GET",
+          url: `/ajax`,
+          data,
+          success: function (result) {
+            console.log(result);
+            $("#result").html(`ajax get ${result.name} 다녀왔니?`);
+          },
+        });
+      }
+
+      function ajaxPost() {
+        data = getData();
+        if (!data) return;
+        $.ajax({
+          type: "POST",
+          url: "/ajax",
+          data,
+          success: function (result) {
+            console.log(result);
+            $("#result").html(`ajax post ${result.name} 왓니?`);
+          },
+        });
+      }
+
+      function axiosGet() {
+        data = getData();
+        if (!data) return;
+        axios({
+          method: "get",
+          url: "/axios",
+          params: data,
+        }).then((result) => {
+          console.log(result);
+          const { name, password } = result.data;
+          $("#result").html(`axios get ${name}  입니다.`);
+        });
+      }
+
+      async function axiosPost() {
+        const data = getData();
+        if (!data) return;
+        try {
+          const res = await axios({
+            method: "post",
+            url: "/axios",
+            data,
+          });
+          const { id, name, password } = res.data;
+          $("#result").html(`axios post ${name}  입니다.`);
+        } catch (error) {
+          console.log(error.name);
+          if (error.name == "AxiosError") {
+            $("#result").html(`${error.name} 에러입니다.`);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
