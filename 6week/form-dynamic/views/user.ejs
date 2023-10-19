@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>axios get 회원가입</h1>
+    <form name="userInfo">
+      <div>
+        <span>이름</span>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <form></form>
+      <fieldset id="gender">
+        <legend>성별</legend>
+        <input type="radio" value="man" name="gender" required /><label
+          for="man"
+          >남자</label
+        >
+        <input type="radio" value="woman" name="gender" required /><label
+          for="woman"
+          >여자</label
+        >
+      </fieldset>
+      <fieldset id="birth">
+        <legend>생년월일</legend>
+
+        <select name="year" id="year">
+          <% for(i=0; i<30; i++){ const year = new Date().getFullYear() %>
+          <option value="<%=year-i%>"><%=year-i%></option>
+          <% } %>
+        </select>
+        <label for="year">년</label>
+        <select name="month" id="month">
+          <% for(i = 1; i <= 12; i++){ const month = new Date().getMonth() %>
+
+          <option value="<%=i%>"><%=i%></option>
+          <% } %>
+        </select>
+        <label for="year">월</label>
+        <select name="day" id="day">
+          <% for(i = 1; i<=31; i++){ %>
+          <option value="<%=i%>"><%=i%></option>
+
+          <% } %>
+        </select>
+        <label for="year">일</label>
+      </fieldset>
+      <fieldset id="hobby">
+        <legend>관심사</legend>
+        <input type="checkbox" id="tour" name="hobby" value="tour" /><label
+          for="tour"
+          >여행</label
+        >
+        <input
+          type="checkbox"
+          id="fashion"
+          name="hobby"
+          value="fashion"
+        /><label for="fashion">패션</label>
+        <input type="checkbox" id="food" name="hobby" value="food" /><label
+          for="food"
+          >음식</label
+        >
+      </fieldset>
+
+      <br />
+      <button type="button" onclick="axiosGet()">회원가입</button>
+    </form>
+
+    <script>
+      let name;
+      let gender;
+      let date;
+
+      function changeYear() {
+        const year = document.getElementById("year").value;
+        const month = document.getElementById("month").value;
+        const day = document.getElementById("day").value;
+        return (date = {
+          year,
+          month,
+          day,
+        });
+      }
+
+      function hobbyCheck() {
+        let hobby = [];
+        hh = document.getElementsByName("hobby");
+
+        hh.forEach((el) => {
+          if (el.checked) {
+            hobby.push(el.value);
+          }
+        });
+        return hobby;
+      }
+
+      //   function birthCheck() {
+      //     const birth = document.getElementById("birth");
+      //     console.log(birth.options);
+      //   }
+
+      function genderCheck() {
+        let gender;
+        gg = document.getElementsByName("gender");
+        gg.forEach((node) => {
+          if (node.checked) {
+            gender = node.value;
+          }
+        });
+        return gender;
+      }
+      function axiosGet() {
+        const name = document.getElementById("name").value;
+        const gender = genderCheck();
+        const date = changeYear();
+        const hobby = hobbyCheck();
+        const user = {
+          name,
+          gender,
+          date,
+          hobby,
+        };
+        console.log(user);
+        axios({
+          method: "get",
+          url: "/userGet",
+          params: user,
+        });
+      }
+    </script>
+  </body>
+</html>

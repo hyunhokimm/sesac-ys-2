@@ -14,14 +14,20 @@
   <body>
     <h1>회원가입</h1>
     <form name="register">
-      <input type="text" placeholder="ID" name="id" required />
+      <input type="text" placeholder="ID" id="id" name="id" required />
       <input type="password" placeholder="password" name="pw" />
       <input type="text" placeholder="name" name="name" />
+      <br />
       <button type="button" onclick="ajaxGet()">ajax get</button>
       <button type="button" onclick="ajaxPost()">ajax post</button>
       <br />
       <button type="button" onclick="axiosGet()">axios get</button>
       <button type="button" onclick="axiosPost()">axios post</button>
+      <br />
+      <button type="button" onclick="fetchGet()">fetch get</button>
+      <button type="button" onclick="fetchPost()">fetch post</button>
+      <br />
+      <button type="button" onclick="pageMove()">페이지 이동</button>
     </form>
     <h3 id="result"></h3>
     <script>
@@ -31,6 +37,7 @@
           form.reportValidity();
           return;
         }
+        console.log(form);
 
         const data = {
           id: form.id.value,
@@ -76,7 +83,6 @@
           url: "/axios",
           params: data,
         }).then((result) => {
-          console.log(result);
           const { name, password } = result.data;
           $("#result").html(`axios get ${name}  입니다.`);
         });
@@ -99,6 +105,55 @@
             $("#result").html(`${error.name} 에러입니다.`);
           }
         }
+      }
+
+      function fetchGet() {
+        const data = getData();
+        if (!data) return;
+        // fetch는 기본값이 get이고 get요청시 데이터는 query로만 보낼수 있다.
+        // const urlQuery = `id=${data.id}&name=${data.name}&password=${data.password}`;
+        // data를 쿼리로 변경하기
+        const urlQuery = new URLSearchParams(data).toString();
+
+        fetch(`/fetch?${urlQuery}`, {
+          method: "get",
+        }).then(async (res) => {
+          // 응답을 처리하는 과정에서 json으로 파싱해야함
+          console.log(res);
+          //   await res.json();
+
+          res.json().then((res) => $("#result").html(`fetch get ${res.name}`));
+        });
+      }
+      async function fetchPost() {
+        const data = getData();
+        if (!data) return;
+        const urlQuery = new URLSearchParams(data).toString();
+
+        // 원래는 기본값이 : x-www-form-urlencoded post
+        // fetch post 요청시에는 기본값을 사용 했을때 동작을 안함.
+        // content-type 을 application/json으로 변경
+        const res = await fetch("/fetch", {
+          method: "post",
+          headers: {
+            //
+            "Content-type": "application/json",
+          },
+          //   object 를 json 형태로 변환할때
+          body: JSON.stringify(data),
+        });
+        const result = await res.json();
+        console.log(result);
+        $("#result").html(`fetch post ${result.name}`);
+      }
+
+      function pageMove() {
+        // axios({
+        //   method: "get",
+        //   url: "/user",
+        // }).then((res) => console.log(res));
+
+        location.href = "/user";
       }
     </script>
   </body>

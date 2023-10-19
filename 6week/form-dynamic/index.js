@@ -29,6 +29,24 @@ app.post("/axios", (req, res, next) => {
   //   next();
 });
 
+app.get("/fetch", (req, res) => {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+app.post("/fetch", (req, res) => {
+  res.send(req.body);
+});
+
+app.get("/user", (req, res) => {
+  console.log("user");
+  res.render("user");
+});
+
+app.get("/userGet", (req, res) => {
+  console.log(req.query);
+});
+
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
