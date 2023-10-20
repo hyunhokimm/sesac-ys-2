@@ -16,14 +16,19 @@
       <form></form>
       <fieldset id="gender">
         <legend>성별</legend>
-        <input type="radio" value="man" name="gender" required /><label
+        <!-- label에서 for를 이용하여 input radio 설정하기 위해서는 input id와
+        label의 for가 같아야함. -->
+        <input type="radio" value="man" name="gender" id="man" required /><label
           for="man"
           >남자</label
         >
-        <input type="radio" value="woman" name="gender" required /><label
-          for="woman"
-          >여자</label
-        >
+        <input
+          type="radio"
+          value="woman"
+          name="gender"
+          id="woman"
+          required
+        /><label for="woman">여자</label>
       </fieldset>
       <fieldset id="birth">
         <legend>생년월일</legend>
@@ -69,6 +74,8 @@
 
       <br />
       <button type="button" onclick="axiosGet()">회원가입</button>
+      <button type="button" onclick="prac2Page()">실습2번</button>
+      <div id="user"></div>
     </form>
 
     <script>
@@ -76,10 +83,14 @@
       let gender;
       let date;
 
+      function prac2Page() {
+        location.href = '/practice2';
+      }
+
       function changeYear() {
-        const year = document.getElementById("year").value;
-        const month = document.getElementById("month").value;
-        const day = document.getElementById("day").value;
+        const year = document.getElementById('year').value;
+        const month = document.getElementById('month').value;
+        const day = document.getElementById('day').value;
         return (date = {
           year,
           month,
@@ -89,7 +100,7 @@
 
       function hobbyCheck() {
         let hobby = [];
-        hh = document.getElementsByName("hobby");
+        hh = document.getElementsByName('hobby');
 
         hh.forEach((el) => {
           if (el.checked) {
@@ -106,7 +117,7 @@
 
       function genderCheck() {
         let gender;
-        gg = document.getElementsByName("gender");
+        gg = document.getElementsByName('gender');
         gg.forEach((node) => {
           if (node.checked) {
             gender = node.value;
@@ -115,7 +126,7 @@
         return gender;
       }
       function axiosGet() {
-        const name = document.getElementById("name").value;
+        const name = document.getElementById('name').value;
         const gender = genderCheck();
         const date = changeYear();
         const hobby = hobbyCheck();
@@ -125,12 +136,15 @@
           date,
           hobby,
         };
-        console.log(user);
         axios({
-          method: "get",
-          url: "/userGet",
+          method: 'get',
+          url: '/userGet',
           params: user,
         });
+        if (user) {
+          const userInfo = document.getElementById('user');
+          userInfo.innerHTML = `${user.name} 님 안녕하세요.`;
+        }
       }
     </script>
   </body>

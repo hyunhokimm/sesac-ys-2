@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>practice2</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <form>
+      <div><span>ID</span><input type="text" id="id" /></div>
+      <div><span>PW</span><input type="text" id="pw" /></div>
+      <button type="button" onclick="login()">로그인</button>
+      <div id="info"></div>
+    </form>
+
+    <script>
+      async function login() {
+        const id = document.getElementById('id').value;
+        const pw = document.getElementById('pw').value;
+        const info = document.getElementById('info');
+
+        try {
+          const res = await axios.post('/userInfo', {
+            id,
+            pw,
+          });
+          console.log(res);
+          info.innerHTML = res.data;
+          info.setAttribute('style', 'color: blue');
+        } catch (e) {
+          info.innerHTML = e.response.data;
+          info.setAttribute('style', 'color: red');
+        }
+      }
+    </script>
+  </body>
+</html>
