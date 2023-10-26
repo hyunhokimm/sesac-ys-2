@@ -11,6 +11,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
+app.get("/account", (req, res) => {
+  res.render("account");
+});
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>account</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <div><span>이름</span> <input type="text" id="name" /></div>
+        <br />
+        <fieldset id="gender">
+          <input type="radio" value="man" id="man" name="gender" required />
+          <label for="man">남자</label>
+          <input type="radio" value="woman" id="woman" name="gender" />
+          <span for="woman">여자</span>
+        </fieldset>
+        <br />
+        <button type="button" onclick="onClick()">회원가입</button>
+      </div>
+    </form>
+    <script>
+      function onClick() {
+        const name = document.getElementById("name").value;
+        const gender = document.getElementsByName("gender").value;
+        axios.post("/user/create", {
+          name,
+          gender,
+        });
+      }
+    </script>
+  </body>
+</html>
