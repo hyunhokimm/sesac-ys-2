@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 남기기</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>방명록 남기기</legend>
+        <input type="text" name="username" /> <span>이름</span>
+        <br />
+        <input type="text" name="comment" /> <span>방명록</span>
+        <br />
+        <button type="button" onclick="addVisitor()">등록</button>
+      </fieldset>
+    </form>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>작성자</th>
+            <th>방명록</th>
+            <th>수정</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0; i< data.length; i++) { %>
+          <tr>
+            <td id="id"><%= data[i].id %></td>
+            <td><%= data[i].username %></td>
+            <td><%= data[i].conment %></td>
+            <td><button type="button" onclick="">수정</button></td>
+            <td>
+              <button
+                type="button"
+                onclick="delComment('<%= data[i].id %>', this.parentElement)"
+              >
+                삭제
+              </button>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    const delComment = (id, Trelement) => {
+      console.log(id);
+      axios({
+        method: "delete",
+        url: `visitor/${id}`,
+      });
+    };
+
+    const addVisitor = () => {
+      const username = document.getElementsByName("username")[0].value;
+      const comment = document.getElementsByName("comment")[0].value;
+      axios({
+        method: "post",
+        url: "visitor",
+        data: {
+          username,
+          comment,
+        },
+      }).then((res) => {
+        console.log(res);
+        const name = res.data.name;
+        const comment = res.data.comment;
+        $("tbody").append(`<td>${name}</td> <td>${comment}</td>`);
+      });
+    };
+  </script>
+</html>
