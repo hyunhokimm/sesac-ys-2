@@ -29,10 +29,7 @@ export const postModel = (req, cb) => {
   );
 };
 
-export const delModelVisitor = (req, cb) => {
-  const id = req.param;
-  console.log(id);
-
+export const delModelVisitor = (id, cb) => {
   connect.query(`delete from visitor where id = '${id}'`, (err, result) => {
     if (err) {
       throw err;

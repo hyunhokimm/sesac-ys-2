@@ -18,8 +18,8 @@ export const postVisitor = (req, res) => {
 };
 
 export const delConVisitor = (req, res) => {
-  console.log(req.params);
-  delModelVisitor(req, (cb) => {
+  const id = req.params.id;
+  delModelVisitor(id, (cb) => {
     res.send("삭제가 완료되었습니다.");
   });
 };

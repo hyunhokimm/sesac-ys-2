@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>account</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>회원 가입</h1>
+    <form>
+      <span>ID</span> <input type="text" id="id" /><br />
+      <span>password</span> <input type="text" id="pw" /><br />
+      <span>password check</span> <input type="text" id="pwCheck" /><br />
+      <span>name</span> <input type="text" id="name" /><br />
+      <br />
+      <button type="button" onclick="onClick()">회원가입</button>
+      <div id="alert"></div>
+    </form>
+  </body>
+  <script>
+    const onClick = () => {
+      const id = document.getElementById("id").value;
+      const pw = document.getElementById("pw").value;
+      const pwCheck = document.getElementById("pwCheck").value;
+      const name = document.getElementById("name").value;
+      const alert = document.getElementById("alert");
+      const user = {
+        id,
+        pw,
+        name,
+      };
+      if (pw !== pwCheck) {
+        alert.innerHTML = "패스워드는 같아야 합니다.";
+
+        return;
+      }
+
+      axios({
+        method: "post",
+        url: "/account",
+        data: user,
+      }).then((res) => {
+        console.log(res.data);
+        location.href = "/login";
+      });
+    };
+  </script>
+</html>

@@ -14,7 +14,11 @@
         <br />
         <input type="text" name="comment" /> <span>방명록</span>
         <br />
-        <button type="button" onclick="addVisitor()">등록</button>
+        <div style="display: flex">
+          <button type="button" onclick="addVisitor()">등록</button>
+          <br />
+          <div id="alert" style="margin-left: 20px"></div>
+        </div>
       </fieldset>
     </form>
     <div>
@@ -55,6 +59,12 @@
       axios({
         method: "delete",
         url: `visitor/${id}`,
+      }).then((result) => {
+        document.getElementById("alert").innerHTML = "삭제되었습니다.";
+        setTimeout(() => {
+          document.getElementById("alert").innerHTML = "";
+          location.href = "/visitor";
+        }, 1000);
       });
     };
 
@@ -70,9 +80,8 @@
         },
       }).then((res) => {
         console.log(res);
-        const name = res.data.name;
-        const comment = res.data.comment;
-        $("tbody").append(`<td>${name}</td> <td>${comment}</td>`);
+
+        location.href = "/visitor";
       });
     };
   </script>
