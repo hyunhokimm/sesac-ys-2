@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
+  </head>
+  <body>
+    <h1>반갑습니다.</h1>
+    <div id="id"></div>
+    <div id="name"></div>
+    <button>회원정보 변경</button>
+    <button>로그아웃</button>
+  </body>
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    document.getElementById('id').innerHTML = user[0].userId;
+    document.getElementById(
+      'name'
+    ).innerHTML = `${user[0].username}님 환영합니다.`;
+    console.log(user);
+  </script>
+</html>

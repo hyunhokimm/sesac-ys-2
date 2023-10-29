@@ -4,8 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>user</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1>login</h1>
+    <form>
+      <div>아이디 :<input type="text" id="id" /></div>
+      <div>비밀번호:<input type="text" id="pw" /></div>
+      <div><button type="button" onclick="onClick()">로그인</button></div>
+      <div id="alert"></div>
+    </form>
+    <script>
+      const onClick = () => {
+        document.getElementById('alert').innerHTML = 'Loading...';
+        const id = document.getElementById('id').value;
+        const pw = document.getElementById('pw').value;
+        info = { id, pw };
+        axios({
+          method: 'post',
+          url: '/check',
+          data: info,
+        })
+          .then((res) => {
+            console.log(res);
+            if (res.data.user) {
+              location.href = '/home';
+              localStorage.setItem('user', JSON.stringify(res.data.user));
+              document.getElementById('alert').innerHTML = '';
+            } else {
+              document.getElementById('alert').innerHTML = res.data;
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+    </script>
   </body>
 </html>
