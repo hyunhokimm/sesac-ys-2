@@ -4,21 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>home</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1>반갑습니다.</h1>
-    <div id="id"></div>
-    <div id="name"></div>
-    <button>회원정보 변경</button>
-    <button>로그아웃</button>
+    <div id="userInfo">
+      <div id="id"></div>
+      <div id="name"></div>
+    </div>
+
+    <br />
+    <button onclick="onUpdate()">회원정보 변경</button>
+    <button onclick="onDelete()">회원탈퇴</button>
+    <button onclick="onLogout()">로그아웃</button>
   </body>
   <script>
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
+    if (user === '' || user == null) {
+      location.href = '/login';
+    }
 
-    document.getElementById('id').innerHTML = user[0].userId;
+    document.getElementById('id').innerHTML = user.userId;
     document.getElementById(
       'name'
-    ).innerHTML = `${user[0].username}님 환영합니다.`;
-    console.log(user);
+    ).innerHTML = `${user.username}님 환영합니다.`;
+
+    let userInfo = document.getElementById('userInfo');
+    let inputbox = document.createElement('input');
+    let updatebutton = document.createElement('button');
+
+    const onUpdate = () => {
+      userInfo.appendChild(inputbox);
+      userInfo.appendChild(updatebutton);
+      inputbox.id = 'update';
+      updatebutton.textContent = '이름 업데이트';
+      updatebutton.addEventListener('click', update);
+    };
+
+    const update = () => {
+      let user = JSON.parse(localStorage.getItem('user'));
+      const updateValue = document.getElementById('update').value;
+      user = {
+        id: user.id,
+        userId: user.userId,
+        password: user.password,
+        username: updateValue,
+      };
+
+      localStorage.setItem('user', JSON.stringify(user));
+      axios({
+        method: 'post',
+        url: '/userUpdate',
+        data: user,
+      })
+        .then((res) => {
+          document.getElementById(
+            'name'
+          ).innerHTML = `${user.username}님 환영합니다.`;
+          inputbox.remove();
+          updatebutton.remove();
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+    const onDelete = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const id = user.userId;
+      console.log(id);
+      axios({
+        method: 'post',
+        url: '/userDelete',
+        data: { id: id },
+      })
+        .then((res) => {
+          localStorage.setItem('user', '');
+          location.href = '/login';
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    const onLogout = () => {};
   </script>
 </html>

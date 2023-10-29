@@ -26,15 +26,42 @@ export const userModelAccount = (req, res) => {
   return userCreate;
 };
 
-export const userModelCheck = (req, res) => {
-  const { id, pw } = req.body;
-  return new Promise((resolve, rej) => {
-    sql.query(`select * from user where userId = '${id}' `, (err, res) => {
+export const userModelCheck = (req) => {
+  return new Promise((resolve, reject) => {
+    const { id } = req.body;
+    sql.query(`select * from user where userId = '${id}' `, (err, result) => {
       if (err) {
-        res(err);
+        reject(err);
       } else {
-        resolve(res);
+        console.log(result);
+        resolve(result);
       }
     });
   });
+};
+
+export const userModelUpdate = (req, res) => {
+  sql.query(
+    `UPDATE user SET username = "${req.username}" WHERE userId = '${req.userId}'`,
+    (err, result) => {
+      if (err) {
+        throw err;
+      } else {
+        res.send('변경되었습니다.');
+      }
+    }
+  );
+};
+
+export const userModelDelete = (req, cb) => {
+  console.log(req.body);
+  sql.query(
+    `delete from user where userId = '${req.body.id}'`,
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    }
+  );
 };

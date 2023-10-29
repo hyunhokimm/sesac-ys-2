@@ -26,11 +26,12 @@
           data: info,
         })
           .then((res) => {
-            console.log(res);
             if (res.data.user) {
-              location.href = '/home';
-              localStorage.setItem('user', JSON.stringify(res.data.user));
+              const userData = res.data.user;
+              console.log(userData[0]);
+              localStorage.setItem('user', JSON.stringify(userData[0]));
               document.getElementById('alert').innerHTML = '';
+              location.href = '/home';
             } else {
               document.getElementById('alert').innerHTML = res.data;
             }

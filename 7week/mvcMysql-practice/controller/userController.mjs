@@ -1,4 +1,9 @@
-import { userModelAccount, userModelCheck } from '../model/userModel.mjs';
+import {
+  userModelAccount,
+  userModelCheck,
+  userModelDelete,
+  userModelUpdate,
+} from '../model/userModel.mjs';
 
 export const userControllerAccount = async (req, res) => {
   const { id, pw, name } = req.body;
@@ -39,5 +44,25 @@ export const userControllerCheck = async (req, res) => {
     }
   } catch (error) {
     res.send(error);
+  }
+};
+
+export const userControllerUpdate = (req, res) => {
+  try {
+    // await userModelCheck(req);
+    userModelUpdate(req, res);
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+export const userControllerDelete = (req, res) => {
+  try {
+    userModelDelete(req, (result) => {
+      console.log(result);
+      res.send('삭제완료.');
+    });
+  } catch (error) {
+    res.status(400).send('다시 시도해 주세요.');
   }
 };
