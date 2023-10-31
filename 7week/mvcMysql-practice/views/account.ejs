@@ -20,35 +20,37 @@
   </body>
   <script>
     const onClick = () => {
-      const id = document.getElementById('id').value;
-      const pw = document.getElementById('pw').value;
-      const pwCheck = document.getElementById('pwCheck').value;
-      const name = document.getElementById('name').value;
-      const alert = document.getElementById('alert');
+      const id = document.getElementById("id").value;
+      const pw = document.getElementById("pw").value;
+      const pwCheck = document.getElementById("pwCheck").value;
+      const name = document.getElementById("name").value;
+      const alert = document.getElementById("alert");
       const user = {
         id,
         pw,
         name,
       };
       if (pw !== pwCheck) {
-        alert.innerHTML = '패스워드는 같아야 합니다.';
+        alert.innerHTML = "패스워드는 같아야 합니다.";
 
         return;
       }
 
       axios({
-        method: 'post',
-        url: '/account',
+        method: "post",
+        url: "/account",
         data: user,
       })
         .then((res) => {
-          document.getElementById('alert').innerHTML = 'Loading.....';
-          if (res.data === '이미 등록된 유저가 있습니다.') {
-            document.getElementById('alert').innerHTML = res.data;
+          document.getElementById("alert").innerHTML = "Loading.....";
+          if (res.data === "이미 등록된 유저가 있습니다.") {
+            document.getElementById("alert").innerHTML = res.data;
             return;
           } else {
             console.log(res.data);
-            location.href = '/login';
+
+            location.href = "/login";
+            document.getElementById("alert").innerHTML = "";
           }
         })
         .catch((e) => {
