@@ -13,8 +13,11 @@
       <span>password</span><input type="text" id="password" /><br />
       <span>name</span><input type="text" id="userName" /><br />
       <br />
-      <button type="button" onclick="onUserCreate()">회원가입</button>
+      <button id="account" type="button" onclick="onUserCreate()">
+        회원가입
+      </button>
     </form>
+
     <h1>상품등록</h1>
     <form>
       <span>상품명</span><input type="text" id="productName" /><br />
@@ -48,6 +51,7 @@
           .then((result) => {
             const productInfo = result.data;
             console.log(productInfo);
+            localStorage.setItem("product", productInfo);
           })
           .catch((err) => {
             console.log(err);
@@ -57,9 +61,7 @@
         const userId = document.getElementById("userId").value;
         const password = document.getElementById("password").value;
         const userName = document.getElementById("userName").value;
-
         const user = { userId, password, userName };
-
         axios({
           method: "post",
           url: "user/create",
@@ -67,12 +69,14 @@
         })
           .then((result) => {
             const userInfo = result.data;
-            console.log(userInfo);
+            localStorage.setItem("user", userInfo);
+            location.href = "/user/login";
           })
           .catch((err) => {
             console.log(err);
           });
       }
+      function onUpdate() {}
     </script>
   </body>
 </html>
