@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>account</title>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <form>
+      <span>Id</span><input type="text" id="userId" /><br />
+      <span>password</span><input type="text" id="password" /><br />
+      <span>name</span><input type="text" id="userName" /><br />
+      <br />
+      <button type="button" onclick="onUserCreate()">회원가입</button>
+    </form>
+    <h1>상품등록</h1>
+    <form>
+      <span>상품명</span><input type="text" id="productName" /><br />
+      <span>상품 수량</span><input type="number" id="productCount" /><br />
+      <span>상품 가격</span><input type="number" id="productPrice" /><br />
+      <span>상품 설명</span><textarea type="text" id="productComment"></textarea
+      ><br />
+      <br />
+      <button type="button" onclick="onProductCreate()">상품등록</button>
+    </form>
+
+    <script>
+      function onProductCreate() {
+        const productName = document.getElementById("productName").value;
+        const productCount = document.getElementById("productCount").value;
+        const productPrice = document.getElementById("productPrice").value;
+        const productComment = document.getElementById("productComment").value;
+
+        const product = {
+          productName,
+          productCount,
+          productPrice,
+          productComment,
+        };
+
+        axios({
+          method: "post",
+          url: "/product/create",
+          data: product,
+        })
+          .then((result) => {
+            const productInfo = result.data;
+            console.log(productInfo);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+      function onUserCreate() {
+        const userId = document.getElementById("userId").value;
+        const password = document.getElementById("password").value;
+        const userName = document.getElementById("userName").value;
+
+        const user = { userId, password, userName };
+
+        axios({
+          method: "post",
+          url: "user/create",
+          data: user,
+        })
+          .then((result) => {
+            const userInfo = result.data;
+            console.log(userInfo);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    </script>
+  </body>
+</html>
