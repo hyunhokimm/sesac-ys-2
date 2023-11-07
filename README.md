@@ -8,3 +8,4 @@ git push 리모트 영역
 - git branch test
 - git branch test 2차
 - 3차 branch test1 입니다.
+- 3차 branch test2 입니다.
