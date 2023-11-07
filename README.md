@@ -4,3 +4,5 @@
 git add . 스테이징 영역
 git commit -m "메세지" 로컬 영역
 git push 리모트 영역
+
+- git branch test
