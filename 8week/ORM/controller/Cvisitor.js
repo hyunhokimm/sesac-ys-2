@@ -1,17 +1,17 @@
-const { Visitor } = require("../model");
+const { Visitor } = require('../models/Visitor');
 
 exports.home = (req, res) => {
-  res.render("index");
+  res.render('index');
 };
 
 // GET /visitors => 기존 방명록 전체 조회 후 render("visitor")
 exports.visitor = (req, res) => {
   // select * from visitor;
   Visitor.findAll().then((result) => {
-    console.log("findAll result: ", result);
-    console.log("0 index의 username", result[0].username); // dataValues는 생략 해도 됨!
+    console.log('findAll result: ', result);
+    console.log('0 index의 username', result[0].username); // dataValues는 생략 해도 됨!
     // 기대 : [{id: , username: , comment: }, {id: , username: , comment: }]
-    res.render("visitor", { data: result });
+    res.render('visitor', { data: result });
   });
 
   // Visitor.findAll({
@@ -46,7 +46,7 @@ exports.deleteVisitor = (req, res) => {
       id: req.params.id,
     },
   }).then((result) => {
-    console.log("destroy result: ", result);
+    console.log('destroy result: ', result);
     res.send({ result: true });
   });
 };
@@ -59,7 +59,7 @@ exports.getVisitorById = (req, res) => {
       id: req.params.id,
     },
   }).then((result) => {
-    console.log("findOne result: ", result);
+    console.log('findOne result: ', result);
     res.send(result);
   });
 };
@@ -76,7 +76,7 @@ exports.patchVisitor = (req, res) => {
       id: req.body.id,
     },
   }).then((result) => {
-    console.log("update result: ", result);
+    console.log('update result: ', result);
     res.send({ result: true });
   });
 };
@@ -84,13 +84,13 @@ exports.patchVisitor = (req, res) => {
 exports.getTest = (req, res) => {
   // select username from visitor where id = 2 order by username ASC
   Visitor.findAll({
-    attributes: ["username", "id"],
+    attributes: ['username', 'id'],
     // where: {
     //   id: req.params.id,
     // },
-    order: [["username", "ASC"]],
+    order: [['username', 'ASC']],
   }).then((result) => {
-    console.log("findOne result: ", result);
+    console.log('findOne result: ', result);
     res.send(result);
   });
 };
