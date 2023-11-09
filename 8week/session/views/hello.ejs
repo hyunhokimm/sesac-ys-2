@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <% if( !data ) { %>
+  <h1>로그인해 주세요.</h1>
+  <button onclick="login()" id="login">로그인</button>
+  <% } else if(data) { %>
+
+  <h1><%= data %> 님 안녕하세요.</h1>
+  <button onclick="logout()">로그아웃</button>
+  <% } %>
+
+  <body>
+    <script>
+      console.log(`<%= data%>`);
+
+      function login() {
+        axios({
+          method: "post",
+          url: "/change",
+        }).then(() => {
+          location.href = "/set";
+        });
+      }
+      function logout() {
+        axios({
+          method: "post",
+          url: "/change",
+        }).then((result) => {
+          location.href = "/set";
+        });
+      }
+    </script>
+  </body>
+</html>
