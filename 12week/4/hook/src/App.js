@@ -1,10 +1,10 @@
 import "./App.css";
-import Practice1 from "./component/Practice1";
+import Hooks from "./components/Hooks";
 
 function App() {
   return (
     <div className="App">
-      <Practice1 />
+      <Hooks />
     </div>
   );
 }
