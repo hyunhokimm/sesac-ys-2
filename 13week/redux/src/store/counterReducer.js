@@ -1,14 +1,20 @@
-const initialValue = { number: 100 };
+const INCREMENT = "counter/INCREMENT";
+const DECREMENT = "counter/DECREMENT";
 
-const reducer = (state = initialValue, action) => {
+export const increase = (money) => ({ type: INCREMENT, money });
+export const decrease = (money) => ({ type: DECREMENT, money });
+
+const initialValue = { money: 0 };
+
+const counterReducer = (state = initialValue, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { number: state.number + 1 };
-    case "DECREMENT":
-      return { number: state.number - 1 };
+    case INCREMENT:
+      return { money: state.money + action.money };
+    case DECREMENT:
+      return { money: state.money - action.money };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default counterReducer;
