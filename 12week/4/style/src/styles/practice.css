@@ -1,0 +1,16 @@
+.circle {
+  width: 100px;
+  height: 100px;
+}
+
+.circle .red {
+  background-color: red;
+}
+
+.circle .yellow {
+  background-color: yellow;
+}
+
+.circle .green {
+  background-color: green;
+}
