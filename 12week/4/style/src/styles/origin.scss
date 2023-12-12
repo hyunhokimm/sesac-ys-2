@@ -1,0 +1,17 @@
+$color-main: red;
+
+.scss {
+  color: $color-main;
+  height: 100px;
+  width: 100% -100px;
+  background-color: aqua;
+}
+
+@mixin box-width() {
+  width: 100px;
+  height: 100px;
+}
+
+.box {
+  @include box-width();
+}
