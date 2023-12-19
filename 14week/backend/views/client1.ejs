@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>socket</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>socket</h3>
+    <button onclick="hello()">hello</button>
+    <button onclick="study()">study</button>
+    <button onclick="bye()">bye</button>
+    <div id="new"></div>
+    <script>
+      const socket = io();
+      function hello() {
+        socket.emit("hello", { message: "안녕하세요." });
+        socket.on("hello2", (arg) => {
+          console.log(arg);
+          const newid = document.getElementById("new");
+          newid.innerText = arg.res.message;
+        });
+      }
+
+      function study() {
+        socket.emit("study", { message: "study" });
+        socket.on("study2", (arg) => {
+          console.log(arg);
+          const newid = document.getElementById("new");
+          newid.innerText = arg.res.message;
+        });
+      }
+
+      function bye() {
+        socket.emit("bye", { message: "bye" });
+        socket.on("bye2", (arg) => {
+          console.log(arg);
+          const newid = document.getElementById("new");
+          newid.innerText = arg.res.message;
+        });
+      }
+    </script>
+  </body>
+</html>

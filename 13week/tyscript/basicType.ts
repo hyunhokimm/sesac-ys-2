@@ -32,4 +32,21 @@ let olimpic_newgame: readonly (object | boolean)[] = [
   true,
 ];
 
+type Product1 = {
+  productName: string;
+  price: number;
+  sale?: number;
+};
+
+const cider: Product1 = {
+  productName: "cider",
+  price: 2000,
+};
+
+const cola: Product1 = {
+  productName: "cola",
+  price: 3000,
+  sale: 100,
+};
+
 console.log(str);
